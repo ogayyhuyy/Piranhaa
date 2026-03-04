@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untukmu yang Spesial ❤️ - Romantis Ultimate</title>
+    <meta name="description" content="Halaman Romantis Ultimate dengan Animasi, Musik, dan Efek Spesial">
+    <meta name="keywords" content="romantis, cinta, animasi, hadiah digital, kado">
+    <meta name="author" content="Special Someone">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variabel Warna Tema Romantis Neon */
+        :root {
+            --pink-neon: #ff007f;
+            --purple-neon: #7f00ff;
+            --blue-neon: #00e5ff;
+        }
+
+        /* Base Reset & Layout Fullscreen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, var(--pink-neon), var(--purple-neon), var(--blue-neon), var(--pink-neon));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Animasi Background Gradient Mengalir */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Canvas Particle Position */
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Kontainer Konten Utama */
+        #ui-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeInScale 1.5s ease-in-out;
+        }
+
+        /* Efek Glow pada Judul */
+        .glow-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            margin: 0 0 15px 0;
+            text-shadow: 0 0 10px #fff, 0 0 20px var(--pink-neon), 0 0 30px var(--pink-neon), 0 0 40px var(--purple-neon);
+            animation: fadeInScale 2s ease-in-out;
+        }
+
+        /* Typewriter Container & Text */
+        #typewriter-container {
+            height: 80px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #typewriter-text {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin: 0;
+            border-right: 2px solid #fff;
+            white-space: pre-wrap;
+            animation: blinkCursor 0.7s infinite, fadeInScale 2.5s ease-in-out;
+        }
+
+        @keyframes blinkCursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #fff; }
+        }
+
+        /* Animasi Muncul Scale/Fade */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Gaya Tombol */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .glow-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInScale 3s ease-in-out;
+        }
+
+        /* Efek Hover Tombol Glow */
+        .glow-btn:hover {
+            background: #fff;
+            color: var(--pink-neon);
+            box-shadow: 0 0 15px #fff, 0 0 25px var(--pink-neon);
+            transform: scale(1.05);
+            border-color: #fff;
+        }
+
+        /* Tombol Spesial Download */
+        .btn-download {
+            background: rgba(0, 229, 255, 0.2);
+            border-color: var(--blue-neon);
+        }
+
+        .btn-download:hover {
+            color: #fff;
+            background: var(--blue-neon);
+            box-shadow: 0 0 15px var(--blue-neon), 0 0 30px var(--blue-neon);
+        }
+
+        /* Animasi Efek Klik Love Kecil */
+        .click-heart {
+            position: absolute;
+            font-size: 24px;
+            animation: floatUp 1s ease-out forwards;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            text-shadow: 0 0 10px var(--pink-neon);
+            z-index: 9999;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -150%) scale(2); opacity: 0; }
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 600px) {
+            .glow-title { font-size: 3.2rem; }
+            #typewriter-text { font-size: 1rem; }
+            .glow-btn { padding: 8px 16px; font-size: 13px; }
+            #typewriter-container { height: 60px; }
+            #ui-container { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Musik Background (MP3 Royalty Free) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Layer Background Animasi Bintang/Love via Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- UI Container Utama -->
+    <div id="ui-container">
+        <h1 class="glow-title">Untukmu ❤️</h1>
+        
+        <div id="typewriter-container">
+            <p id="typewriter-text"></p>
+        </div>
+
+        <div class="controls">
+            <button id="btnPlay" class="glow-btn">🎵 Putar Musik</button>
+            <button id="btnStop" class="glow-btn">🔇 Hentikan Musik</button>
+            <button id="btnSurprise" class="glow-btn">🎁 Surprise ❤️</button>
+            <button id="btnDownload" class="glow-btn btn-download">⬇️ Download File Ini</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. EFEK TYPEWRITER OTOMATIS BERGANTIAN ---
+        // 5-8 Kalimat romantis yang akan muncul
+        const sentences = [
+            "Di antara miliaran bintang, kamu yang paling bersinar.",
+            "Senyummu adalah keajaiban yang selalu aku tunggu.",
+            "Bersamamu, setiap detik terasa seperti selamanya yang indah.",
+            "Terima kasih sudah hadir dan mewarnai duniaku.",
+            "Kamu adalah alasan di balik kebahagiaanku hari ini.",
+            "Aku menyayangimu, lebih dari kata-kata yang bisa terucap."
+        ];
+        
+        let sentenceIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const textElement = document.getElementById("typewriter-text");
+
+        function typeWriter() {
+            const currentSentence = sentences[sentenceIndex];
+            
+            if (!isDeleting && charIndex <= currentSentence.length) {
+                textElement.textContent = currentSentence.substring(0, charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else if (isDeleting && charIndex >= 0) {
+                textElement.textContent = currentSentence.substring(0, charIndex);
+                charIndex--;
+                setTimeout(typeWriter, 50);
+            } else if (!isDeleting && charIndex > currentSentence.length) {
+                isDeleting = true;
+                setTimeout(typeWriter, 2500); // Waktu jeda untuk membaca kalimat lengkap
+            } else if (isDeleting && charIndex < 0) {
+                isDeleting = false;
+                sentenceIndex = (sentenceIndex + 1) % sentences.length;
+                setTimeout(typeWriter, 500); // Waktu jeda sebelum mengetik kalimat selanjutnya
+            }
+        }
+        
+        // Memulai typewriter
+        setTimeout(typeWriter, 1500);
+
+        // --- 2. CANVAS JAVASCRIPT: PARTIKEL BINTANG JATUH ---
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particlesArray = [];
+        const colors = ['#ff6b81', '#ff7eb3', '#ff007f', '#ffffff', '#00e5ff'];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Jika menyentuh dinding, pantulkan kembali
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles(count) {
+            for (let i = 0; i < count; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Generate partikel pertama kali
+        initParticles(60);
+        animateParticles();
+
+        // --- 3. KONTROL AUDIO ---
+        const bgMusic = document.getElementById("bgMusic");
+        
+        document.getElementById("btnPlay").addEventListener('click', () => {
+            bgMusic.play().catch(e => console.log("Gagal memutar audio: ", e));
+        });
+
+        document.getElementById("btnStop").addEventListener('click', () => {
+            bgMusic.pause();
+        });
+
+        // --- 4. EFEK SURPRISE ---
+        document.getElementById("btnSurprise").addEventListener('click', () => {
+            // Tambahkan partikel banyak
+            initParticles(150);
+            
+            // Percepat animasi pergerakan background
+            document.body.style.animationDuration = '2s';
+            
+            // Kembalikan ke normal setelah 5 detik
+            setTimeout(() => {
+                document.body.style.animationDuration = '15s';
+            }, 5000);
+        });
+
+        // --- 5. EFEK KLIK MOUSE MUNCUL LOVE KECIL ---
+        document.addEventListener('click', (e) => {
+            // Abaikan jika klik terjadi pada tombol
+            if(e.target.tagName.toLowerCase() === 'button') return;
+            
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'click-heart';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            document.body.appendChild(heart);
+            
+            // Hapus elemen love setelah 1 detik
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+        });
+
+        // --- 6. FITUR DOWNLOAD OTOMATIS DENGAN BLOB METHOD ---
+        document.getElementById('btnDownload').addEventListener('click', function() {
+            // Mengambil keseluruhan isi kode HTML saat ini
+            const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            
+            // Mengubah string HTML menjadi objek Blob
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            
+            // Membuat URL dari Blob
+            const url = URL.createObjectURL(blob);
+            
+            // Membuat elemen link anchor untuk trigger download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'romantis-ultimate.html';
+            
+            // Menambahkan ke body, klik untuk eksekusi, lalu hapus
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Membersihkan memory
+            URL.revokeObjectURL(url);
+        });
